@@ -96,5 +96,7 @@ wm = WeChatMessage(client)
 data = {"love_days": {"value": get_special_day()}, "weather_text": {"value": get_weather_text()}, "birthday_left": {"value": get_birthday()}, "words": {"value": get_words(), "color": get_random_color()}}
 print(data)
 # 发送消息，给指定用户发送指定模板消息
-res_data = wm.send_template(user_id, template_id, data)
-print(res_data)
+user_ids = user_id.split(',')
+for user in user_ids:
+    res_data = wm.send_template(user, template_id, data)
+    print(res_data)
