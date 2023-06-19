@@ -93,9 +93,10 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 
-data = {"love_days": {"value": get_special_day(), "color": get_random_color()},
-        "weather_text": {"value": get_weather_text, "color": get_random_color()},
-        "birthday_left": {"value": get_birthday(), "color": get_random_color()},
+data = {"love_days": {"value": get_special_day()},
+        "weather_text": {"value": get_weather_text},
+        "birthday_left": {"value": get_birthday()},
         "words": {"value": get_words(), "color": get_random_color()}}
 # 发送消息，给指定用户发送指定模板消息
-wm.send_template(user_id, template_id, data)
+res_data = wm.send_template(user_id, template_id, data)
+print(res_data)
