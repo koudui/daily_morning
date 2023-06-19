@@ -1,4 +1,5 @@
 import json
+import time
 from datetime import date, datetime
 import math
 from wechatpy import WeChatClient
@@ -98,5 +99,6 @@ print(data)
 # 发送消息，给指定用户发送指定模板消息
 user_ids = user_id.split(',')
 for user in user_ids:
+    time.sleep(100)
     res_data = wm.send_template(user, template_id, data)
     print(res_data)
