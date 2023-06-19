@@ -9,7 +9,7 @@ import random
 
 # 自定义相关数据
 today = datetime.now()  # 获取当前日期，用于生日、特殊日子等天数判断
-special_day = os.environ['SPECIAL_DAY']
+special_day = os.environ['START_DATE']
 birthday = os.environ['BIRTHDAY']
 city = os.environ['CITY']
 
