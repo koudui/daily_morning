@@ -69,7 +69,7 @@ def get_special_day():
 def get_birthday():
     next_day = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
     if next_day < datetime.now():
-        next_day = next_day.replace(year=next.year + 1)
+        next_day = next_day.replace(year=next_day.year + 1)
     if (next_day - today).days == 0:
         return '生日快乐！'
     else:
