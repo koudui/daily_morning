@@ -56,7 +56,9 @@ def get_weather_text():
         info = '别忘了带雨伞哦~'
     elif weather_data.get('temp') <= 15:
         info = '天凉了，记得添件衣服~'
-    text = '%s天气%s，温度%s°C，%s' % (city, weather_data.get('weather'), weather_data.get('temp'), info)
+    else:
+        info = ''
+    text = ('%s天气%s，温度%s°C，%s' if info != '' else '%s天气%s，温度%s°C%s') % (city, weather_data.get('weather'), weather_data.get('temp'), info)
     return text
 
 
