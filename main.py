@@ -13,6 +13,7 @@ today = datetime.now()  # 获取当前日期，用于生日、特殊日子等天
 special_day = os.environ['START_DATE']
 birthday = os.environ['BIRTHDAY']
 city = os.environ['CITY']
+wedding_day = os.environ['WEDDING_DAY']
 
 # 微信公众号相关配置
 app_id = os.environ["APP_ID"]
@@ -50,22 +51,15 @@ def get_weather():
 
 def get_weather_text():
     weather_data = get_weather()
-    if '晴' in weather_data.get('weather') or weather_data.get('temp') >= 30:
-        info = '快把防晒衣穿起来~'
-    elif '雨' in weather_data.get('weather'):
-        info = '别忘了带雨伞哦~'
-    elif weather_data.get('temp') <= 15:
-        info = '天凉了，记得添件衣服~'
-    else:
-        info = ''
-    text = ('%s天气%s，温度%s°C，%s' if info != '' else '%s天气%s，温度%s°C%s') % (city, weather_data.get('weather'), weather_data.get('temp'), info)
+    text = ('%s天气%s，温度%s°C') % (city, weather_data.get('weather'), weather_data.get('temp'))
     return text
 
 
 # 判断纪念日天数
 def get_special_day():
     delta = today - datetime.strptime(special_day, "%Y-%m-%d")
-    return '我们已经相守%d天，以后还要继续走下去' % delta.days
+    deldays = today - datetime.strptime(wedding_day, "%Y-%m-%d")
+    return ('我们已经相守%d天，结婚纪念日第%d天，以后还要继续走下去') % (delta.days,deldays.days)
 
 
 # 判断生日天数
