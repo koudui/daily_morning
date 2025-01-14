@@ -51,7 +51,7 @@ def get_weather():
 
 def get_weather_text():
     weather_data = get_weather()
-    text = ('%s天气%s，温度%s°C') % (city, weather_data.get('weather'), weather_data.get('temp'))
+    text = ('今日%s天气%s，温度%s°C；') % (city, weather_data.get('weather'), weather_data.get('temp'))
     return text
 
 
@@ -59,7 +59,7 @@ def get_weather_text():
 def get_special_day():
     delta = today - datetime.strptime(special_day, "%Y-%m-%d")
     deldays = today - datetime.strptime(wedding_day, "%Y-%m-%d")
-    return ('我们已经相守%d天，结婚纪念日第%d天，以后还要继续走下去') % (delta.days,deldays.days)
+    return ('我们已经相守%d天，持证上岗第%d天，以后还要继续走下去；') % (delta.days,deldays.days + 1)
 
 
 # 判断生日天数
@@ -70,7 +70,7 @@ def get_birthday():
     if (next_day - today).days == 0:
         return '生日快乐！'
     else:
-        return '再过%d天，就是你的生日啦' % (next_day - today).days
+        return '再过%d天，就是你的生日啦；' % (next_day - today).days
 
 
 # 彩虹屁，获取随机文本
@@ -78,7 +78,7 @@ def get_words():
     words = requests.get("https://api.shadiao.pro/chp")
     if words.status_code != 200:
         return get_words()
-    return words.json()['data']['text']
+    return words.json()['data']['text'] + '。'
 
 
 # 获取随机色彩
