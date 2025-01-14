@@ -50,7 +50,7 @@ def get_weather():
 
 def get_weather_text():
     weather_data = get_weather()
-    if '晴' in weather_data.get('weather') or weather_data.get('temp') >= 30:
+    if '晴' in weather_data.get('weather') and weather_data.get('temp') >= 30:
         info = '快把防晒衣穿起来~'
     elif '雨' in weather_data.get('weather'):
         info = '别忘了带雨伞哦~'
