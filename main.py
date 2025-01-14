@@ -51,7 +51,7 @@ def get_weather():
 
 def get_weather_text():
     weather_data = get_weather()
-    text = ('今日%s天气%s，温度%s°C；') % (city, weather_data.get('weather'), weather_data.get('temp'))
+    text = ('%s天气%s，温度%s°C；') % (city, weather_data.get('weather'), weather_data.get('temp'))
     return text
 
 
